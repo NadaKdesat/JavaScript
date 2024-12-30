@@ -1,6 +1,6 @@
 //Calculate the value of zakat for x
 let x = 250 ;
-document.write('The value of zakat for 250 is: '+ 250*(0.025)+ "<br><br>");
+document.write('The value of zakat for 250 is: '+ x*(0.025)+ "<br><br>");
 
 //1 Correct the syntax error
 let arr1=[ 1, 7, 9, 45 ];
