@@ -1,11 +1,13 @@
 //Calculate the value of zakat for x
-let x = 250 ;
-document.write('The value of zakat for 250 is: '+ 250*(0.025)+ "<br><br>");
-
+let x = 25000 ;
+if(x>=4000){
+document.write('The value of zakat for '+x+" is: "+ x*(0.025)+ "<br><br>");
+}else{
+document.write('Amounts below 4,000 are not subject to Zakat.<br><br>');
+}
 //1 Correct the syntax error
 let arr1=[ 1, 7, 9, 45 ];
-let arr2=["Str", "alex", "moh"];
-let arr3=['the','fox', 'over', 'lazy', 'dog'];
+let arr2=["Str", "alex", "moh",'the','fox', 'over', 'lazy', 'dog'];
 
 //2 What the index of "Banana","Tomato"
 var fruits=["Tomato","Banana","Watermelon"];
@@ -50,7 +52,7 @@ array2.push(3.5);
 array2.unshift(5);
 console.log('The array after modification: '+array2);
 
-//8nWrite a JavaScript program to sort the items of an array.
+//8 Write a JavaScript program to sort the items of an array.
 // Sample array : var arr1 = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
 // Sample Output : -4,-3,1,2,3,5,6,7,8
 var SampleArray = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
@@ -85,6 +87,7 @@ function rate(num){
 // let userInput = prompt("Enter a value:");
 let num=60;
 document.write('The rate for ' + num + ' is: '+rate(num)+'<br><br>');
+
 
 //10 Write a JS code to print a pattern using for loop
 for(let i=1;i<=8;i++){
