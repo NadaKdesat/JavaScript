@@ -1,30 +1,30 @@
 //Calculate the value of zakat for x
-<<<<<<< HEAD
 let x = 25000 ;
 if(x>=4000){
 document.write('The value of zakat for '+x+" is: "+ x*(0.025)+ "<br><br>");
 }else{
 document.write('Amounts below 4,000 are not subject to Zakat.<br><br>');
 }
-=======
-let x = 250 ;
-document.write('The value of zakat for 250 is: '+ x*(0.025)+ "<br><br>");
 
->>>>>>> 8008ccd338b9ff072422514422cb0a854674499d
+
 //1 Correct the syntax error
 let arr1=[ 1, 7, 9, 45 ];
 let arr2=["Str", "alex", "moh",'the','fox', 'over', 'lazy', 'dog'];
+
+
 
 //2 What the index of "Banana","Tomato"
 var fruits=["Tomato","Banana","Watermelon"];
 document.write("The index of Banana: "+ fruits.indexOf('Banana')+ "<br>");
 document.write("The index of Tomato: "+ fruits.indexOf('Tomato')+ "<br><br>");
 
+
+
+
 //3 Create an array represents your:
 // 1- Favorite Food (2)
 // 2- Favorite Sport (3)
 // 3- Favorite Movie (2)
-
 let FavoriteFood=['Pasta','Pizza'];
 let FavoriteSport=['Swimming','Football','Tennis'];
 let FavoriteMovie=['Frozen','Moana'];
@@ -32,6 +32,8 @@ let FavoriteMovie=['Frozen','Moana'];
 document.write("My Favorite Food: " + FavoriteFood+'<br>');
 document.write("My Favorite Sport: " + FavoriteSport+'<br>');
 document.write("My Favorite Movie: " + FavoriteMovie+'<br><br>');
+
+
 
 //4 Create a Variable to return the first element in an array
 let arr=[10,43,5,9,3,14];
@@ -64,7 +66,6 @@ console.log('The array after modification: '+array2);
 var SampleArray = [ -3, 8, 7, 6, 5, -4, 3, 2, 1 ];
 document.write('The array after sort: '+SampleArray.sort(function(a,b){return a-b;})+ '<br><br>');
 
-
 //9 Write a JavaScript function that returns rate as text
 // less than 50 return ==> Fail
 // equal or between 50 and 59 ===> E
@@ -93,7 +94,6 @@ function rate(num){
 // let userInput = prompt("Enter a value:");
 let num=60;
 document.write('The rate for ' + num + ' is: '+rate(num)+'<br><br>');
-
 
 //10 Write a JS code to print a pattern using for loop
 for(let i=1;i<=8;i++){
