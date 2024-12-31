@@ -1,16 +1,10 @@
 //Calculate the value of zakat for x
-<<<<<<< HEAD
 let x = 25000 ;
 if(x>=4000){
 document.write('The value of zakat for '+x+" is: "+ x*(0.025)+ "<br><br>");
 }else{
 document.write('Amounts below 4,000 are not subject to Zakat.<br><br>');
 }
-=======
-let x = 250 ;
-document.write('The value of zakat for 250 is: '+ x*(0.025)+ "<br><br>");
-
->>>>>>> 8008ccd338b9ff072422514422cb0a854674499d
 //1 Correct the syntax error
 let arr1=[ 1, 7, 9, 45 ];
 let arr2=["Str", "alex", "moh",'the','fox', 'over', 'lazy', 'dog'];
