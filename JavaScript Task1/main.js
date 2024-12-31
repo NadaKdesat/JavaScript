@@ -5,11 +5,7 @@ document.write('The value of zakat for '+x+" is: "+ x*(0.025)+ "<br><br>");
 }else{
 document.write('Amounts below 4,000 are not subject to Zakat.<br><br>');
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3a761d75281980538bc39f68188b6a1a218fd9ec
 //1 Correct the syntax error
 let arr1=[ 1, 7, 9, 45 ];
 let arr2=["Str", "alex", "moh",'the','fox', 'over', 'lazy', 'dog'];
