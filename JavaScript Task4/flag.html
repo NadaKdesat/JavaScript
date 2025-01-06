@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Flag</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    
+</head>
+<body>
+    <select id="flagSelection">
+        <option value="Jordan" id="Jordan">Jordan</option>
+        <option value="Palestine" id="Palestine">Palestine</option>
+        <option value="Syria" id="Syria">Syria</option>
+    </select>
+    <br><br>
+    <img src="./Jordan.jpg" alt="" id="img" width="300px" height="200px">
+
+    <script>
+        let selectElement=document.getElementById("flagSelection");
+        let image=document.getElementById('img');
+        const options={Jordan:'./Jordan.jpg',Palestine:'./Palestine.jpeg',Syria:'./Syria.jpg'}
+        selectElement.onchange=function(){
+            let country=selectElement.value;
+            image.src=options[country];
+        }
+    </script>
+</body>
+</html>

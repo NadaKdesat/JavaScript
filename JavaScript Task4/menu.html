@@ -1,101 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Hamburger Menu</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            padding: 0px;
+            margin: 0px;
         }
 
-        .menu {
-            position: relative;
-            display: none;
-            flex-direction: column;
-            background-color: #9e4343;
-            padding: 10px;
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #D91147;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 15px 30px;
+            justify-content: space-between;
+            border-bottom:1px solid black;
         }
 
-        .menu a {
+        .navbar a {
             color: white;
-            text-align: center;
             text-decoration: none;
-            padding: 10px 15px;
-            border-bottom: 1px solid #9e4343;
-        }
-
-
-
-        .hamburger {
-            font-size: 5vh;
-            display: block;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #9e4343;
-            color: white;
-            text-align: right;
-            width: 100%;
         }
 
         #logo {
-            left: 2px;
-            top: -48px;
-
-            position: absolute;
+            font-size: 25px;
+            font-weight: bold;
         }
 
-        @media (min-width: 768px) {
+        .hamburger {
+            display: none;
+            background-color: #D91147;
+            border: none;
+            color: white;
+            font-size: 25px;
+            margin-left: auto;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .menu a {
+            margin: 0px 30px;
+        }
+
+        @media (max-width: 768px) {
             .menu {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
+                display: none;
+                flex-direction: column;
+                background-color: #D91147;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 10px 0;
             }
 
             .menu a {
-                border: none;
+                margin: 15px 0px;
+                text-align: center;
             }
 
             .hamburger {
-                display: none;
+                display: block;
+                cursor: pointer;
             }
-
-            #logo {
-                left: 2px;
-                top: -50px;
-                position: absolute;
+            .menu.show {
+                display: flex; 
             }
         }
     </style>
 </head>
 
 <body>
-
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <div class="menu" id="menu">
+    <div class="navbar">
         <a href="#" id="logo">Logo</a>
-        <a href="#">Home</a>
-        <a href="#">Articals</a>
-        <a href="#">About us</a>
-        <a href="#">Services</a>
-        <a href="#">Contact us</a>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <div class="menu" id="menu">
+            <a href="#">Home</a>
+            <a href="#">Articles</a>
+            <a href="#">About us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact us</a>
+        </div>
     </div>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById("menu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show'); 
         }
     </script>
-
 </body>
 
 </html>

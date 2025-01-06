@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form with Local Storage</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
+        #userForm {
+            width: 500px;
+            align-items: center;
+            border: 3px solid black;
+            padding: 30px;
+        }
+
         .card {
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+
+        .card2 {
+            display: block;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
@@ -15,18 +35,23 @@
         }
     </style>
 </head>
+
 <body>
     <form id="userForm">
         <label for="name">Name:</label>
         <input type="text" id="name" required><br><br>
         <label for="age">Age:</label>
-        <input type="number" id="age" required><br><br>
+        <input type="number" id="age" min="10" required><br><br>
         <label for="gender">Gender:</label>
-        <select id="gender"><option>male</option><option>female</option></select><br><br>
+        <select id="gender">
+            <option>male</option>
+            <option>female</option>
+        </select><br><br>
         <label for="birthdate">Birth Date:</label>
         <input type="date" id="birthdate"><br><br>
         <label for="myfile">Upload Image:</label>
-        <input type="file" id="myfile" onchange="showImage()"><br><br>
+        <input type="file" id="myfile"><br><br>
+        <hr>
         <label for="description">Description:</label>
         <input type="text" id="description" required><br><br>
         <label for="m&u">Major & University:</label>
@@ -40,15 +65,17 @@
         <input type="text" id="siblings" required><br><br>
         <label for="siblingsDec">Siblings Description:</label>
         <input type="text" id="siblingsDec" required><br><br>
-        <button type="button" onclick="saveToLocal()">Save to Local Storage</button>
-        <button type="button" onclick="showLocal()">Show Local Storage</button>
+        <button type="button" onclick="Submit()">Submit</button>
     </form>
-
-    <div class="card">
+    <div id="card" class="card">
         <p id="outputName">Name:</p>
         <p id="outputAge">Age:</p>
         <p id="outputGender">Gender:</p>
         <p id="outputBirthdate">Birthdate:</p>
+        <p id="outputImage">
+            image:<br>
+            <img style="max-width: 100%; margin-top: 20px;" />
+        </p>
         <p id="outputDescription">Description:</p>
         <p id="outputMajor">Major & University:</p>
         <p id="outputLanguages">Programming Languages:</p>
@@ -57,47 +84,57 @@
     </div>
 
     <script>
-        function saveToLocal() {
-            localStorage.setItem("name", document.getElementById("name").value);
-            localStorage.setItem("age", document.getElementById("age").value);
+        function Submit() {
+            localStorage.setItem('name', document.getElementById('name').value);
+            localStorage.setItem('age', document.getElementById('age').value);
             localStorage.setItem("gender", document.getElementById("gender").value);
             localStorage.setItem("birthdate", document.getElementById("birthdate").value);
+            localStorage.setItem("image", document.getElementById("myfile").value);
             localStorage.setItem("description", document.getElementById("description").value);
             localStorage.setItem("major", document.getElementById("m&u").value);
 
-                const languages = [];
-                    if (document.getElementById("html").checked) languages.push("HTML");
-                    if (document.getElementById("css").checked) languages.push("CSS");
-                    if (document.getElementById("javascript").checked) languages.push("JavaScript");
+            const languages = [];
+            if (document.getElementById("html").checked) languages.push("HTML");
+            if (document.getElementById("css").checked) languages.push("CSS");
+            if (document.getElementById("javascript").checked) languages.push("JavaScript");
+            localStorage.setItem("languages", languages.join(" "));
 
-                    localStorage.setItem("languages", languages.join(" "));
-            }
+            localStorage.setItem("siblings", document.getElementById("siblings").value);
+            localStorage.setItem("siblingsDesc", document.getElementById("siblingsDec").value);
 
-        function showLocal() {
+
+            document.getElementById("card").className = 'card2';
+
             document.getElementById("outputName").innerText = "Name: " + (localStorage.getItem("name") || "No data");
             document.getElementById("outputAge").innerText = "Age: " + (localStorage.getItem("age") || "No data");
             document.getElementById("outputGender").innerText = "Gender: " + (localStorage.getItem("gender") || "No data");
             document.getElementById("outputBirthdate").innerText = "Birthdate: " + (localStorage.getItem("birthdate") || "No data");
+            const file = document.getElementById("myfile").files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    let existingImg = document.getElementById("outputImage").querySelector("img");
+                    if (!existingImg) { 
+                        const img = document.createElement("img");
+                        img.src = reader.result;
+                        img.style.maxWidth = "100px";
+                        img.style.marginTop = "20px";
+                        document.getElementById("outputImage").appendChild(img);
+                    } else {
+                        existingImg.src = reader.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
             document.getElementById("outputDescription").innerText = "Description: " + (localStorage.getItem("description") || "No data");
             document.getElementById("outputMajor").innerText = "Major & University: " + (localStorage.getItem("major") || "No data");
             document.getElementById("outputLanguages").innerText = "Programming Languages: " + (localStorage.getItem("languages") || "No data");
             document.getElementById("outputSiblings").innerText = "Siblings: " + (localStorage.getItem("siblings") || "No data");
             document.getElementById("outputSiblingsDesc").innerText = "Siblings Description: " + (localStorage.getItem("siblingsDesc") || "No data");
+
         }
 
-        function showImage() {
-            const file = document.getElementById("myfile").files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    const img = document.createElement("img");
-                    img.src = reader.result;
-                    img.width = 100;
-                    document.body.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
     </script>
 </body>
+
 </html>
