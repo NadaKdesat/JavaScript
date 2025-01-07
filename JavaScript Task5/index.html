@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+</head>
+
+<body>
+    <form>
+        <label for="Fname">Enter a Fname:</label><br>
+        <input type="text" id="fname" name="fname">
+        <span id="fnameError" style="color: red; display: none;">numbers are not allow</span><br>
+
+        <label for="Lname">Enter a Lname:</label><br>
+        <input type="text" id="Lname" name="Lname">
+        <span id="lnameError" style="color: red; display: none;">numbers are not allow</span><br>
+
+        <label for="Bdate">Enter a Bdate:</label><br>
+        <input type="text" id="Bdate" name="Bdate">
+        <span id="BdateError" style="color: red; display: none;">The format should be dd/mm/yyyy</span><br>
+
+        <label for="Email">Enter an Email:</label><br>
+        <input type="text" id="Email" name="Email">
+        <span id="EmailError" style="color: red; display: none;">The e-mail is not valid</span><br>
+
+        <label for="CEmail">Confirm Email:</label><br>
+        <input type="text" id="CEmail" name="CEmail">
+        <span id="CEmailError" style="color: red; display: none;">The e-mail do not match</span><br>
+
+        <label for="Password">Password:</label><br>
+        <input type="password" id="Password" name="Password">
+        <span id="PasswordError" style="color: red; display: none;">Password is invalid</span><br>
+
+        <label for="CPassword">Confirm Password:</label><br>
+        <input type="password" id="CPassword" name="CPassword">
+        <span id="CPasswordError" style="color: red; display: none;">Passwords do not match</span><br>
+    </form>
+
+    <script>
+        let Fname = document.getElementById('fname');
+        let Lname = document.getElementById('Lname');
+        let Bdate = document.getElementById('Bdate');
+        let Email = document.getElementById('Email');
+        let CEmail = document.getElementById('CEmail');
+        let Password = document.getElementById('Password');
+        let CPassword = document.getElementById('CPassword');
+
+        let fnameError = document.getElementById('fnameError');
+        let lnameError = document.getElementById('lnameError');
+        let BdateError = document.getElementById('BdateError');
+        let EmailError = document.getElementById('EmailError');
+        let CEmailError = document.getElementById('CEmailError');
+        let PasswordError = document.getElementById('PasswordError');
+        let CPasswordError = document.getElementById('CPasswordError');
+
+        const usernamePattern = /^[a-z]+$/i;
+        const BdatePattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+        const EmailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const PasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,8}$/;
+
+        fname.addEventListener('input', function () {
+            if (!usernamePattern.test(fname.value)) {
+                fnameError.style.display = 'inline';  
+            } else {
+                fnameError.style.display = 'none'; 
+            }
+        });
+        Lname.addEventListener('input', function () {
+            if (!usernamePattern.test(Lname.value)) {
+                lnameError.style.display = 'inline';  
+            } else {
+                lnameError.style.display = 'none'; 
+            }
+        });
+
+        Bdate.addEventListener('input', function(){
+            if(!BdatePattern.test(Bdate.value)){
+                BdateError.style.display = 'inline';  
+            } else {
+                BdateError.style.display = 'none';  
+            }
+        });
+
+        Email.addEventListener('input', function(){
+            if(!EmailPattern.test(Email.value)){
+                EmailError.style.display = 'inline';  
+            } else {
+                EmailError.style.display = 'none';  
+            }
+        });
+
+        CEmail.addEventListener('input', function(){
+            if(Email.value !== CEmail.value){
+                CEmailError.style.display = 'inline';  
+            } else {
+                CEmailError.style.display = 'none';  
+            }
+        });
+
+        Password.addEventListener('input', function(){
+            if(!PasswordPattern.test(Password.value)){
+                PasswordError.style.display = 'inline';  
+            } else {
+                PasswordError.style.display = 'none';  
+            }
+        });
+
+        CPassword.addEventListener('input', function(){
+            if(Password.value !== CPassword.value){
+                CPasswordError.style.display = 'inline';  
+            } else {
+                CPasswordError.style.display = 'none';  
+            }
+        });
+    </script>
+</body>
+
+</html>
