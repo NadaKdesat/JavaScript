@@ -24,10 +24,10 @@ function ShowData() {
     //     const response = await fetch('https://api.npoint.io/bd15b466e7e893d5f8e2');
     //     const data = await response.json();
     //     cardsContainer.innerHTML = '';
-    
+
     //     data.forEach(user => {
     //         const card = document.createElement('div');
-    //         card.className = 'card'; 
+    //         card.className = 'card';
     //         card.innerHTML = `
     //             <p>${user.name}</p>
     //             <p><strong>Age: </strong>${user.age}</p>
@@ -36,8 +36,8 @@ function ShowData() {
     //         `;
     //         cardsContainer.appendChild(card);
     //     });
-    
     // }
-    fetchData();
+    // fetchData();
+    
     cardsContainer.style.display = 'flex';
 }
