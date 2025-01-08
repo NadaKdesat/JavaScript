@@ -3,78 +3,41 @@ const card2 = document.getElementById('card2');
 const card3 = document.getElementById('card3');
 const card4 = document.getElementById('card4');
 const card5 = document.getElementById('card5');
+const cardsContainer = document.getElementById('Cards');
 
 function ShowData() {
-    // fetch('data.json')
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         card1.innerHTML = `
-    //         <p>${data[0].name}</p>
-    //         <p><strong>Age: </strong>${data[0].age}</p>
-    //         <p><strong>Email: </strong>${data[0].email}</p>
-    //         <p><strong>Profession: </strong>${data[0].profession}</p>
-    //         `
-    //         card2.innerHTML = `
-    //         <p>${data[1].name}</p>
-    //         <p><strong>Age: </strong>${data[1].age}</p>
-    //         <p><strong>Email: </strong>${data[1].email}</p>
-    //         <p><strong>Profession: </strong>${data[1].profession}</p>
-    //         `
-    //         card3.innerHTML = `
-    //         <p>${data[2].name}</p>
-    //         <p><strong>Age: </strong>${data[2].age}</p>
-    //         <p><strong>Email: </strong>${data[2].email}</p>
-    //         <p><strong>Profession: </strong>${data[2].profession}</p>
-    //         `
-    //         card4.innerHTML = `
-    //         <p>${data[3].name}</p>
-    //         <p><strong>Age: </strong>${data[3].age}</p>
-    //         <p><strong>Email: </strong>${data[3].email}</p>
-    //         <p><strong>Profession: </strong>${data[3].profession}</p>
-    //         `
-    //         card5.innerHTML = `
-    //         <p>${data[4].name}</p>
-    //         <p><strong>Age: </strong>${data[4].age}</p>
-    //         <p><strong>Email: </strong>${data[4].email}</p>
-    //         <p><strong>Profession: </strong>${data[4].profession}</p>
-    //         `
-    //     })
+    const cards = [card1, card2, card3, card4, card5];
+    fetch('data.json')
+        .then((response) => response.json())
+        .then((data) => {
+            cards.forEach((card, index) => {
+                card.innerHTML = `
+                <p>${data[index].name}</p>
+                <p><strong>Age: </strong>${data[index].age}</p>
+                <p><strong>Email: </strong>${data[index].email}</p>
+                <p><strong>Profession: </strong>${data[index].profession}</p>
+                `;
+            });
+        });
 
-    async function fetchData() {
-        const response = await fetch('https://api.npoint.io/bd15b466e7e893d5f8e2');
-        const data = await response.json();
-        card1.innerHTML = `
-            <p>${data[0].name}</p>
-            <p><strong>Age: </strong>${data[0].age}</p>
-            <p><strong>Email: </strong>${data[0].email}</p>
-            <p><strong>Profession: </strong>${data[0].profession}</p>
-            `
-        card2.innerHTML = `
-            <p>${data[1].name}</p>
-            <p><strong>Age: </strong>${data[1].age}</p>
-            <p><strong>Email: </strong>${data[1].email}</p>
-            <p><strong>Profession: </strong>${data[1].profession}</p>
-            `
-        card3.innerHTML = `
-            <p>${data[2].name}</p>
-            <p><strong>Age: </strong>${data[2].age}</p>
-            <p><strong>Email: </strong>${data[2].email}</p>
-            <p><strong>Profession: </strong>${data[2].profession}</p>
-            `
-        card4.innerHTML = `
-            <p>${data[3].name}</p>
-            <p><strong>Age: </strong>${data[3].age}</p>
-            <p><strong>Email: </strong>${data[3].email}</p>
-            <p><strong>Profession: </strong>${data[3].profession}</p>
-            `
-        card5.innerHTML = `
-            <p>${data[4].name}</p>
-            <p><strong>Age: </strong>${data[4].age}</p>
-            <p><strong>Email: </strong>${data[4].email}</p>
-            <p><strong>Profession: </strong>${data[4].profession}</p>
-            `
-    }
+    // async function fetchData() {
+    //     const response = await fetch('https://api.npoint.io/bd15b466e7e893d5f8e2');
+    //     const data = await response.json();
+    //     cardsContainer.innerHTML = '';
     
+    //     data.forEach(user => {
+    //         const card = document.createElement('div');
+    //         card.className = 'card'; 
+    //         card.innerHTML = `
+    //             <p>${user.name}</p>
+    //             <p><strong>Age: </strong>${user.age}</p>
+    //             <p><strong>Email: </strong>${user.email}</p>
+    //             <p><strong>Profession: </strong>${user.profession}</p>
+    //         `;
+    //         cardsContainer.appendChild(card);
+    //     });
+    
+    // }
     fetchData();
-    document.getElementById('Cards').style.display = 'flex';
+    cardsContainer.style.display = 'flex';
 }
